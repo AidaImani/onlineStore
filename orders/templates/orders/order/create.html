@@ -1,0 +1,54 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+    سبدخریدشما|سفارش
+{% endblock %}
+
+{% block content %}
+    <div id="order" style="background-image:url(../../../static/back-order.jpg);background-size: cover;height: auto" >
+        <div class="row container">
+            <div class="col-1"></div>
+             <div class="col-4"  style="text-align: center;margin-top: 30px; ">
+
+                <table class="table table-hover" style="background-color: #bcbcbc91;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th style="text-align: center">
+                                <h6 style="font-family: yekan">
+                                    <i>:سفارش شما</i>
+                                </h6>
+                            </th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {% for item in cart %}
+                            <tr><td>{{ item.quantity }}x {{ item.product.name }}</td>
+                            <td><span>{{ item.total_price }}تومان</span></td></tr>
+                        {% endfor %}
+                        <tr>
+                            <td class="num">{{ cart.get_total_price }}تومان </td>
+                            <td>مجموع</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="direction: rtl;margin-top: 30px;border: 1px solid #cccccc;background-color: #b3b1b185">
+                <h6 class="page-header" style="font-family: yekan;padding: 4px; text-align: center">
+                    <i>فرم سفارش</i>
+                </h6><hr>
+                <form action="." method="post" style="text-align: right" id="order">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit"  value="ثبت سفارش" style="margin-right: 130px;margin-bottom: 22px;border-radius: 3px;cursor: pointer;
+                    background-color: #8888885e;">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

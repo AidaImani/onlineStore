@@ -1,0 +1,57 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+{% block extra_head %}
+    <link href="{% static 'css/base.css' %}">
+{% endblock %}
+{% block content %}
+    <div id="subHeader"  class="container-fluid">
+        <div class="cart">
+            {% if user.is_authenticated %}
+                <p id="auth"> عزیز{{ user.username }}سلام </p><br>
+            {% endif %}
+            {% with total_items=cart|length %}
+                {% if cart|length > 0 %}
+                    <p class="card_info">
+                        سبدخریدشما:
+                        <a href="{% url 'cart:cart_detail' %}" style="text-decoration: none">
+                            <span>{{ total_items }}آیتم</span><span>{{ cart.get_total_price }}ریال </span>
+                        </a></p>
+                {% else %}
+
+                    <p class="card_info"> سبد خرید شما خالی است</p>
+
+                {% endif %}
+            {% endwith %}
+        </div>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" id="button_logout" style="position: relative;
+            top: 15px;
+            left: 15px;">
+            <button style="border-radius: 2px" class="btn">خروج</button>
+        </a>
+        {% endif %}
+    </div>
+    <div class="product_detail container-fluid" style="width: 967px">
+
+        <img id="productImg"
+             src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image' %}{% endif %}">
+        <div id="productInfo">
+            <h5>دسته بندی: <a class="cate" href="{{ product.category.get_absolute_url }}">{{ product.category }}</a>
+            </h5><hr>
+            <div id="about">
+                <p id="nameProduct">{{ product.name }}</p>
+                <p class="price">قیمت:{{ product.price }}تومان</p>
+                {{ product.description|linebreaks }}
+            </div>
+            <form action="{% url 'cart:cart_add' product_id=product.id %}" method="post">
+                {% csrf_token %}
+                {{ cart_product_form }}
+                <input type="submit" id="submit" value="افزودن به سبد خرید">
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

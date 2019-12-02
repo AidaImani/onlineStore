@@ -1,0 +1,62 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+    سبدخرید شما
+{% endblock %}
+{% block extra_head %}
+{% endblock %}
+{% block content %}
+
+    <div id="cartBox" class="container-fluid" style="background-image: radial-gradient(#ffffff,#c1b8bb);border-radius: 10px;margin-top: 6px;" >
+        <p id="titleCart" style="text-align: center;font-family: yekan;font-size: 18px;padding: 13px">سبدخریدشما</p>
+        <table class="container table table-hover ">
+            <thead style="text-align: center;font-size: 15px;font-style: oblique;background-color: #a7a7a6b3;">
+            <tr>
+                <th style="padding: 6px;">قیمت کل</th>
+                <th style="padding: 6px;">قیمت واحد</th>
+                <th style="padding: 6px;">حذف</th>
+                <th style="padding: 6px;">تعداد</th>
+                <th style="padding: 6px;">محصول</th>
+                <th style="padding: 6px;"> تصویر</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <tr>
+                        <td class="num">{{ item.total_price }}</td>
+                        <td class="num">{{ item.price }}</td>
+                        <td><a style="text-decoration: none;color: #821616bf;width: 100px;" href="{% url 'cart:cart_remove' product_id=product.id %}">حذف</a></td>
+                        <td>
+                            <form action="{% url 'cart:cart_add' product_id=product.id %}" method="post">
+                                {% csrf_token %}
+                                {{ item.update_quantity_form.quantity }}
+                                {{ item.update_quantity_form.update }}
+                                <input type="submit" value="update" style="border-radius: 4px;">
+                            </form>
+                        </td>
+                        <td>{{ product.name }}</td>
+                        <td>
+                            <a href="{{ product.get_absolute_url }}">
+                                <img style="width: 249px;height: 249px" src="{% if product.image %}{{ product.image.url }}{% endif %}">
+                            </a>
+                        </td>
+                    </tr>
+                {% endwith %}
+            {% endfor %}
+            <tr>
+                <td class="num">{{ cart.get_total_price }}تومان</td>
+                <td colspan="4"></td>
+                <td>مجموع</td>
+
+            </tr>
+
+            </tbody>
+        </table>
+        <p style="margin-left: 371px;padding: 10px 10px 22px 10px;">
+            <button class="btn" style="border-radius: 4px;margin-left: 10px;"><a style="text-decoration: none" href="{% url 'shop:product_list' %}">ادامه ی خرید</a></button>
+            <button class="btn" style="border-radius: 4px;margin-left: 10px;"><a style="text-decoration: none"  href="{% url "orders:order_create" %}">سفارش</a></button>
+
+        </p>
+    </div>
+{% endblock %}

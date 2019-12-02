@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ورود</title>
+    <style>
+        body{
+            background-image: url("../../static/img/back-order.jpg");
+        }
+        form#login_form {
+            direction: rtl;
+            margin-right: 59px;
+        }
+
+        div#form_contain {
+            border: 1px solid #cccccc;
+            width: 300px;
+            margin-left: 341PX;
+            margin-top: 46px;
+            border-radius: 9px;
+            background-color: #edefefa1;
+            box-shadow: 1px 1px 9px #adb9ad;
+        }
+        form#login_form input{
+            padding: 5px;
+            margin-bottom: 5px;
+            box-shadow: 1px 1px 10px #cccccc;
+        }
+        form#login_form div{
+            margin: 3px;
+        }
+        p#title_register {
+            text-align: center;
+        }
+        strong{
+            display: none;
+        }
+        input#login_button {
+            margin: 26px 74px 10px 10px;
+            cursor: pointer;
+            box-shadow: 2px 2px 8px #b1acac;
+        }
+        #desc{
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid" id="form_reg" >
+    <div id="form_contain" class="card">
+    {% load crispy_forms_tags %}
+        <p id="title_register">ورود</p><hr>
+    <form method="post" id="login_form" >
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" id="login_button" value="ورود"><br>
+
+    </form>
+        <p id="desc">.اگرقبلا ثبت نام نکرده اید<a href="/register"> اینجا</a> کلیک کنید</p>
+        <p>رمز خود را فراموش کرده اید؟ <a href="{% url 'password_reset' %}">اینجا</a> کلیک کنید </p>
+    </div>
+</div>
+</body>
+</html>

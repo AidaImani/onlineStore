@@ -1,0 +1,18 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+    {% if submitbutton == 'جستجو' and request.GET.q != '' %}
+        {% if results %}
+            <h1>نتایج برای : <b>{{ request.GET.q }}</b></h1>
+            <br/><br/>
+
+            {% for result in results %}
+
+                <a href="{% url 'shop:product_detail' result.id result.slug %}">{{ result.name }}</a>
+                {{ result.price }}
+            {% endfor %}
+        {% else %}
+            نتیجه ای یافت نشد.
+        {% endif %}
+    {% else %}
+    {% endif %}
+{% endblock %}

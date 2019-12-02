@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ارتباط باما</title>
+    <style>
+         body{
+            background-image: radial-gradient(#d9d9d9,#ffffff);
+        }
+        form{
+            direction: rtl;
+            margin-right: 17px;
+            padding-bottom: 12px;
+        }
+         div#form_contain {
+            border: 1px solid #cccccc;
+            width: 350px;
+            margin-left: 341PX;
+            margin-top: 23px;
+            border-radius: 9px;
+            background-color: #edefef4f;
+            box-shadow: 1px 1px 9px #adb9ad;
+        }
+        p#title_contact {
+            text-align: center;
+        }
+        form#form_contact input{
+            padding: 5px;
+            margin-bottom: 5px;
+            box-shadow: 1px 1px 10px #cccccc;
+        }
+        form#form_contact div{
+            margin: 3px;
+        }
+        #submit{
+            margin: 5px 129px 10px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid" id="contact" >
+    <div id="form_contain">
+        <p id="title_contact">ارسال پیام</p><hr>
+    <form method="post" id="form_contact">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="ارسال" id="submit">
+    </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ثبت نام</title>
+    <style>
+        body{
+            background-image: url("../../static/img/back-order.jpg");
+        }
+        form#form_register {
+            direction: rtl;
+            margin-right: 59px;
+            padding-bottom: 12px;
+        }
+
+        div#form_contain {
+            border: 1px solid #cccccc;
+            width: 300px;
+            margin-left: 341PX;
+            margin-top: 46px;
+            border-radius: 9px;
+            background-color: #edefefa1;
+            box-shadow: 1px 1px 9px #adb9ad;
+        }
+        form#form_register input{
+            padding: 5px;
+            margin-bottom: 5px;
+            box-shadow: 1px 1px 10px #cccccc;
+        }
+        form#form_register div{
+            margin: 3px;
+        }
+        small{
+            display: none;
+        }
+
+        ul {
+            display: none;
+        }
+
+        small{
+            display: none;
+        }
+
+        input#button_register {
+            margin: 20px 58px 10px 10px;
+            cursor: pointer;
+        }
+
+        p#title_register {
+            text-align: center;
+        }
+        .info p{
+            font-size: 13px;
+            text-align: right;
+            color: #b00000;
+            padding-right: 3px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid" id="form_reg">
+    <div id="form_contain" class="info">
+        <p>نام کاربری را مشابه ایمیل خود انتخاب کنید</p>
+        <p>رمز عبور باید ترکیبی از اعداد و کاراکترها باشد(در صورت انتخاب رمز ساده ثبت نام نخواهید شد.)</p>
+    </div>
+</div>
+<div class="container-fluid" id="form_reg" >
+    <div id="form_contain">
+        {% load crispy_forms_tags %}
+        <p id="title_register">ثبت نام</p><hr>
+        <form method="post" id="form_register">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="ثبت نام" id="button_register">
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

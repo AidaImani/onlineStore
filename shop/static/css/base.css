@@ -1,0 +1,210 @@
+@font-face {
+  font-family: yekan;
+  src:url('font/yekan-font/yekan.eot');
+       url('font/yekan-font/yekan.eot?#iefix') format('FontName-opentype'),
+       url('font/yekan-font/yekan.woff') format('woff'),
+       url('font/yekan-font/yekan.ttf') format('truetype'),
+}
+
+/* for detail.html page*/
+.card_info{
+    float:right;
+}
+.product_detail {
+    width: 967px;
+    border: 2px groove rgba(0, 0, 0, 0.20);
+    border-radius: 5px;
+    margin-top:5px;
+    background-image: linear-gradient(to bottom right, #f2f2f2, #999999);
+}
+#productImg {
+    margin-top: 25px;
+    margin-left: 55px;
+    margin-bottom: 25px;
+    border-radius: 7px;
+    box-shadow: 4px 4px 4px #737070;
+}
+#productInfo {
+    margin-top: 8px;
+    margin-right: 20px;
+    margin-bottom: 80px;
+    direction: rtl;
+    float: right;
+}
+
+.cart {
+    float: right;
+    padding-top: 9px;
+    padding-right: 9px;
+}
+.cate{
+    text-decoration: none;
+    color: #5b5b5b;
+    font-family: yekan;
+}
+#nameProduct{
+    font-size: 18px;
+    font-family: yekan;
+    text-shadow: -1px -1px #525252;
+}
+#about{
+    margin-top: 30px;
+    text-align: right;
+}
+.product_detail #productInfo form{
+    margin-top: 40px;
+    text-align: initial;
+}
+#submit {
+    border: 2px #717171;
+    border-radius: 4px;
+    height: 30px;
+    display: block;
+    margin-top: 9px;
+    box-shadow: 3px 3px #717171;
+    cursor:pointer;
+}
+#subHeader{
+    background-image:url("../../static/img/texture2.jpg");
+    background-size: contain;
+    width: 967px;
+    height: 97px;
+    border-radius: 5px;
+    margin-top:7px;
+}
+#auth{
+    float: right;
+}
+a#button_logout {
+    position: relative;
+    top: 15px;
+    left: 15px;
+
+}
+.btn{
+    box-shadow: 3px 5px 10px #8c8888;
+}
+/** for side bar **/
+#sidebar {
+    height: 300px;
+    border: 1px solid #ccc6c6;
+    float: right;
+    background-color: #e8e4e4;
+    margin-top: 24px;
+    border-radius: 5px;
+    width: 145px;
+    margin-right: 9px;
+    margin-left: 80px;
+    box-shadow: 3px 9px 10px grey;
+}
+
+#sidebar p {
+    text-align: center;
+    font-size: 17px;
+    font-family:yekan;
+    padding-top: 5px;
+}
+#sidebar ul{
+    text-align: right;
+    padding-bottom: 3px;
+}
+#sidebar ul li a{
+    color: #000;
+    font-family: yekan;
+}
+#sidebar ul li{
+    padding: 2px;
+
+}
+#sidebar ul li:hover{
+    box-shadow: 1px 1px 10px #cccccc;
+}
+
+/** for product list **/
+.product_list {
+    margin-top: 24px;
+}
+#titleProduct{
+    text-align: center;
+    font-size: 20px;
+    font-family: yekan;
+}
+.product_list .item{
+    margin: 5px;
+}
+.product_list .item img{
+    width: 200px;
+    height: 282px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px #717171;
+}
+.product_list .item .nameProduct{
+    text-decoration: none;
+    display: block;
+    color: black;
+    text-align: center;
+}
+.product_list .item .priceProduct{
+    text-align: center;
+    margin-top: -10px;
+}
+.product_list .item .priceProduct:hover{
+    color: #ff7167;
+}
+/*for footer*/
+.sec-footer{
+    background: #c6bdb8;
+    direction: rtl;
+    text-align: right;
+    color: #fff;
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+    margin-top: 7px;
+}
+.sec-footer .desc-box{
+    background: transparent;
+    border: 0;
+}
+.sec-footer .desc-box .card-title::after{
+    content: ' ';
+    background: #ffffff;
+    display: block;
+    width: 95%;
+    height: 0.2rem;
+    margin-top:0.3rem;
+}
+.sec-footer .desc-box .card-text{
+    font-family:iranyekan_light;
+    text-align: justify;
+}
+.sec-sub-footer{
+    background: #f2f2f4;
+    direction: rtl;
+    text-align: right;
+    color: #000;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size:0.8rem;
+}
+
+#contentUs{
+    border-radius: 4px;
+}
+.card-body p{
+    text-align: center;
+}
+.card-footer p{
+    text-align: right;
+}
+@media screen and (min-width: 992px){
+    .card-img-top img{
+        width: 970px;
+    }
+}
+#text{
+    direction: rtl;
+    font-family: yekan;
+    font-size: 16px;
+    padding: 27px;
+}

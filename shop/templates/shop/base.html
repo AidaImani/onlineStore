@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <meta charset="UTF-8">
+    <title>{% block title %}یلدا کتاب{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/base.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body class="MainBody" style="height: 100%">
+ <!--First Body's List-->
+    <nav class="navbar navbar-expand-sm  container-fluid justify-content-end" id="nav">
+        <ul class="navbar-nav">
+            <li class="nav-item" id="form_search">
+                <form action="{% url 'search' %}" method="get">
+                    <div class="form-group">
+                        <input class="NavigationSearchBar" type="search" name="q" value="{{ request.GET.q }}">
+                        <input type="submit" name="submit" value="جستجو" id="search">
+                    </div>
+
+                </form>
+            </li>
+            {% if not user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link NavigationMainPage" href="{% url 'login' %}">ورود</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link NavigationMainPage" href="{% url 'register' %}">ثبت نام </a>
+                </li>
+            {% else %}
+                <li class="nav-item" style="width: 100px"></li>
+                <li class="nav-item" style="width: 100px"></li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link NavigationMainPage" href="{% url 'contact' %}">ارتباط با ما</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link NavigationMainPage" href="{% url 'shop:about_us' %}">درباره ی ما</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link NavigationMainPage" href="/">صفحه ی اصلی </a>
+            </li>
+        </ul>
+    </nav>
+
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<section class="container-fluid sec-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card desc-box">
+                    <div class="card-body">
+                        <div class="card-title">درباره ما</div>
+                        <div class="card-text">
+                            کتاب فروشی یلدا واقع در ضلع جنوب غربی میدان انقلاب فعالیت خود را از سال 1390 آغاز کرده است.
+                        </div>
+                        <div class="card-footer">
+                            <a href="{% url 'shop:about_us' %}"><button class="btn">ادامه مطلب</button></a>
+                        </div>
+                    </div>
+                </div><!--.card-->
+            </div><!--.col-->
+            <div class="col">
+                <div class="card desc-box">
+                    <div class="card-body">
+                        <div class="card-title">ارتباط با ما</div>
+                        <div class="card-text">
+                            <div class="row">
+                                <div class="col">
+                                    <span>0216566879</span>
+                                </div><!--.col-->
+                            </div><!--.row-->
+                            <div class="row">
+                                <div class="col">
+                                    <span>تهران ، ضلع جنوب غربی میدان انقلاب</span>
+                                </div><!--.col-->
+                            </div><!--.row-->
+                            <div class="row">
+                                <div class="col">
+                                    <span>yaldabook@</span>
+                                </div><!--.col-->
+                            </div><!--.row-->
+                        </div><!--.card-text-->
+                    </div>
+                </div><!--.card-->
+            </div><!--.col-->
+            <div class="col text-center">
+                <img src="../../static/img/logo.png" class="mb-3">
+            </div><!--.col-->
+        </div><!--.row-->
+    </div>
+</section>
+<section class="container-fluid sec-sub-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <span>تمامی حقوق برای این وب سایت محفوظ است.</span>
+            </div><!--.col-->
+        </div><!--.row-->
+    </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title%}
+    {% if category %}{{category.name}}{% else %}یلدا کتاب{% endif %}
+{% endblock %}
+{% block extra_head %}
+    <link href="{% static 'css/base.css' %}">
+{% endblock %}
+{% block content %}
+    <!-- Slideshow container -->
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../../../static/img/book1.jpg" alt="Los Angeles">
+    </div>
+    <div class="carousel-item">
+      <img src="../../../static/img/book2.jpg" alt="Chicago">
+    </div>
+    <div class="carousel-item">
+      <img src="../../../static/img/book3.jpg" alt="New York">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
+    <article class="SecondList container-fluid">
+        <!--Second Body's List-->
+        <ul class="SecondListBody" style="list-style-type: none">
+            <li class="SecondListFirst"><sub>خرید مطمئن</sub><img class="SecondListFirstImage"
+                                                                  src="../../static/img/handshake.png"></li>
+            <li class="SecondListSecond"><sub>پشتیبانی قوی</sub><img class="SecondListSecondImage"
+                                                                     src="../../static/img/multiple-users-silhouette.png">
+            </li>
+            <li class="SecondListThird"><sub>امنیت پرداخت</sub><img class="SecondListThirdImage"
+                                                                    src="../../static/img/give-money.png"></li>
+            <li class="SecondListForth"><sub>تضمین بازگشت مبلغ</sub><img class="SecondListForthImage"
+                                                                         src="../../static/img/passage-of-time.png">
+            </li>
+            <li class="SecondListFifth"><sub>ارسال رایگان</sub><img class="SecondListFifthImage"
+                                                                    src="../../static/img/dollar-sign-and-piles-of-coins.png">
+            </li>
+        </ul>
+    </article>
+    <div class="row">
+
+        <div id="main" class="product_list col-9 row" style="margin-left: 4px">
+             {% for product in products %}
+                <div class="item card col-3.5">
+
+                    <a href="{{product.get_absolute_url}}">
+                        <img src="{% if product.image %}{{product.image.url}}{% endif %}" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <a class="nameProduct" href="{{product.get_absolute_url}}">{{product.name}}</a><br>
+                        <p class="priceProduct">تومان{{product.price}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{product.get_absolute_url}}"><button class="btn">مشاهده محصول</button></a>
+                    </div>
+
+                </div>
+                {% endfor %}
+        </div>
+
+        <div id="sidebar" class=" col-3s">
+            <p>دسته بندی ها</p>
+            <hr>
+            <ul class="nav flex-column">
+                <li {% if not category%}class = "selected nav-item"{% endif %}>
+                    <a href="{% url 'shop:product_list'%}" class="nav-link">همه</a>
+                </li>
+                {% for c in categories%}
+                    <li {% if category.slug == c.slug %}class = "selected nav-item"{% endif %}>
+                        <a href="{{ c.get_absolute_url }}" class="nav-link">{{c.name}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+
